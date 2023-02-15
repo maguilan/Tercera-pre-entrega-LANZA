@@ -1,0 +1,31 @@
+{% extends "Agenda/padre.html" %}
+
+{% block titulo %}
+Formulario - Agregar Museo
+{% endblock titulo %} 
+
+
+{% block contenido %}
+
+<h1>Museo - Agregar museo</h1>
+<section class="features-icons bg-light">
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <form action="{% url 'museo-formulario' %}" method="POST">
+                    {% csrf_token %}
+                        
+                        <table>
+                            {{ formulario_museo.as_table }}
+                        </table>
+
+                        <input type="submit" value="Enviar">
+
+                    </form>
+                 
+                </div>
+            </div>
+    </div>
+</section>
+{% endblock %}

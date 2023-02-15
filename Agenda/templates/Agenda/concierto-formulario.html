@@ -1,0 +1,31 @@
+{% extends "Agenda/padre.html" %}
+
+{% block titulo %}
+Formulario - Agregar Concierto
+{% endblock titulo %} 
+
+
+{% block contenido %}
+
+<h1>Conciertos - Agregar concierto</h1>
+<section class="features-icons bg-light">
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <form action="{% url 'concierto-formulario' %}" method="POST">
+                    {% csrf_token %}
+                        
+                        <table>
+                            {{ formulario_concierto.as_table }}
+                        </table>
+
+                        <input type="submit" value="Enviar">
+
+                    </form>
+                 
+                </div>
+            </div>
+    </div>
+</section>
+{% endblock %}
