@@ -8,16 +8,16 @@ def inicio(request):
     return render(request, 'Agenda/inicio.html')
 
 def conciertos(request):
-    return render(request, 'Agenda/conciertos.html')
+    return render(request, 'Agenda/concierto-formulario.html')
 
 def museos(request):
-    return render(request, 'Agenda/museos.html')
+    return render(request, 'Agenda/museo-formulario.html')
     
 def artistas(request):
-    return render(request, 'Agenda/artistas.html')
+    return render(request, 'Agenda/artista-formulario.html')
 
 def vida_nocturna(request):
-    return render(request, 'Agenda/vida-nocturna.html')
+    return render(request, 'Agenda/vida-nocturna-formulario.html')
 
 def artista_formulario(request):
 
@@ -92,7 +92,7 @@ def vida_nocturna_formulario(request):
     return render(request, 'Agenda/vida-nocturna-formulario.html', {'formulario_vidanocturna': mi_formulario})
 
 def busqueda_genero(request):
-    return render(request, 'Agenda/busqueda-genero.html')
+    return render(request, 'Agenda/inicio.html')
 
 def buscar(request):
     if request.GET['genero']:

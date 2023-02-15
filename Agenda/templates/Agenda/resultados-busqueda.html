@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "Agenda/padre.html" %}
+
+{% block titulo %}
+Resultados de la búsqueda
+{% endblock titulo %} 
+
+
+{% block contenido %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +13,7 @@
     <title>Resultados de la busqueda</title>
 </head>
 <body>
-    <p>Estamos buscando el genero {{ genero }}</p>
+    <p>Buscaste el genero {{ genero }}</p>
 
     {% if conciertos %}
 
@@ -19,4 +25,4 @@
 
     {% endif %}
 </body>
-</html>
+{% endblock %}
