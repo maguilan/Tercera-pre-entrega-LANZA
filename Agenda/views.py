@@ -11,7 +11,7 @@ def museos(request):
     return render(request, 'Agenda/museos.html')
     
 def artistas(request):
-    return render(request, 'AppCoder/artistas.html')
+    return render(request, 'Agenda/artistas.html')
 
 def vida_nocturna(request):
-    return render(request, 'AppCoder/vida-nocturna.html')
+    return render(request, 'Agenda/vida-nocturna.html')
