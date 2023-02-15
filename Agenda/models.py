@@ -30,10 +30,16 @@ class Artista(models.Model):
     email = models.EmailField()
     profesion = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.nombre + ' ' + str(self.apellido) 
+
 
 class VidaNocturna(models.Model):
     
     lugar = models.CharField(max_length=30)
     evento = models.CharField(max_length=30)
     fecha_de_evento = models.DateField()
+
+    class Meta:
+        verbose_name_plural = 'Vidas Nocturnas'
     
