@@ -22,15 +22,15 @@ def conciertos(request):
                               pasado = informacion['pasado'])
             concierto.save()
 
-            nuevo_concierto = {'genero': informacion['genero'], 'banda': informacion[concierto], 'lugar': informacion['lugar'], 
+            nuevo_concierto = {'genero': informacion['genero'], 'banda': informacion['banda'], 'lugar': informacion['lugar'], 
                               'fecha_concierto': informacion['fecha_concierto'],
                               'pasado': informacion['pasado']}
             return render (request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario, 'nuevo_concierto': nuevo_concierto, 'mis_conciertos': mis_conciertos})
         
-        else:
+    else:
             mi_formulario = ConciertoFormulario()
 
-        return render(request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario, 'mis_conciertos': mis_conciertos})
+    return render(request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario, 'mis_conciertos': mis_conciertos})
 
 
 
@@ -62,24 +62,24 @@ def artista_formulario(request):
     mi_formulario = ArtistaFormulario()
     return render(request, 'Agenda/artista-formulario.html', {'formulario_artista': mi_formulario})
 
-def concierto_formulario(request):
+# def concierto_formulario(request):
 
-    if request.method == 'POST':
-        mi_formulario = ConciertoFormulario(request.POST)
+#     if request.method == 'POST':
+#         mi_formulario = ConciertoFormulario(request.POST)
 
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
-            concierto = Concierto(genero = informacion['genero'], 
-                              banda = informacion['banda'], 
-                              lugar = informacion['lugar'], 
-                              fecha_concierto = informacion['fecha_concierto'],
-                              pasado = informacion['pasado'])
-            concierto.save()
-            return redirect('inicio')
+#         if mi_formulario.is_valid():
+#             informacion = mi_formulario.cleaned_data
+#             concierto = Concierto(genero = informacion['genero'], 
+#                               banda = informacion['banda'], 
+#                               lugar = informacion['lugar'], 
+#                               fecha_concierto = informacion['fecha_concierto'],
+#                               pasado = informacion['pasado'])
+#             concierto.save()
+#             return redirect('inicio')
 
         
-    mi_formulario = ConciertoFormulario()
-    return render(request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario})
+#     mi_formulario = ConciertoFormulario()
+#     return render(request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario})
 
 def museo_formulario(request):
 

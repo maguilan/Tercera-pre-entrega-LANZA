@@ -7,20 +7,38 @@ Formulario - Agregar Concierto
 
 {% block contenido %}
 
-<h1>Conciertos - Agregar concierto</h1>
-<section class="features-icons bg-light">
+<h1>Conciertos</h1>
+<section class="mt-5">
     <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    {% if formulario_curso.errors %}
+                    <p style="color: red;">Los datos están mal. Por favor revíselos.</p>
+                    {% endif %}
+
+                    <h4>Próximos conciertos</h4>
+                    {% for concierto in mis_conciertos %}
+                    {{ concierto.banda }}: {{ concierto.fecha_concierto }} <br>
+                    {% endfor %}
+                    <hr>
                     
-                    <form action="{% url 'concierto-formulario' %}" method="POST">
+                    {% if nuevo_concierto %}
+
+                    <p> Se agregó satisfactoriamente la fecha {{ nuevo_concierto.fecha_concierto }} ({{ nuevo_concierto.banda }})</p>
+                    <hr>
+
+                    {% endif %}
+
+                    <h4>Agregar próximo concierto</h4>
+                    <form action="{% url 'conciertos' %}" method="POST">
                     {% csrf_token %}
                         
                         <table>
                             {{ formulario_concierto.as_table }}
                         </table>
 
-                        <input type="submit" value="Enviar">
+                        <input type="submit" value="Agregar Concierto">
+
 
                     </form>
                  
