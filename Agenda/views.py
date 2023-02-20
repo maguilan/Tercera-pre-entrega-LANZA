@@ -8,7 +8,32 @@ def inicio(request):
     return render(request, 'Agenda/inicio.html')
 
 def conciertos(request):
-    return render(request, 'Agenda/concierto-formulario.html')
+    mis_conciertos = Concierto.objects.all()
+
+    if request.method == 'POST':
+        mi_formulario = ConciertoFormulario(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            concierto = Concierto(genero = informacion['genero'], 
+                              banda = informacion['banda'], 
+                              lugar = informacion['lugar'], 
+                              fecha_concierto = informacion['fecha_concierto'],
+                              pasado = informacion['pasado'])
+            concierto.save()
+
+            nuevo_concierto = {'genero': informacion['genero'], 'banda': informacion[concierto], 'lugar': informacion['lugar'], 
+                              'fecha_concierto': informacion['fecha_concierto'],
+                              'pasado': informacion['pasado']}
+            return render (request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario, 'nuevo_concierto': nuevo_concierto, 'mis_conciertos': mis_conciertos})
+        
+        else:
+            mi_formulario = ConciertoFormulario()
+
+        return render(request, 'Agenda/concierto-formulario.html', {'formulario_concierto': mi_formulario, 'mis_conciertos': mis_conciertos})
+
+
+
 
 def museos(request):
     return render(request, 'Agenda/museo-formulario.html')
