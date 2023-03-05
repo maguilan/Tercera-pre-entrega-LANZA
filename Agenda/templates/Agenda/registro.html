@@ -1,14 +1,13 @@
 {% extends "Agenda/padre.html" %}
 
 {% block titulo %}
-Bienvenidos a CULTA
+Registro de nuevo usuario
 {% endblock titulo %} 
 
 
 {% block contenido %}
 
-
-<section class="features-icons bg-light text-center">
+<section class="mt-5">
     <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -16,7 +15,14 @@ Bienvenidos a CULTA
                     <p style="color: red;">{{ mensaje }}</p>
                     {% endif %}
 
-                    <h1>Bienvenido!</h1>
+                    <form action=" " method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                        <button type="submit">Crear Usuario</button>
+                    
+
+                    </form>
                 </div>
             </div>
     </div>

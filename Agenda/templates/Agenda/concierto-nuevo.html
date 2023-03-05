@@ -1,0 +1,27 @@
+{% extends "Agenda/padre.html" %}
+
+{% block titulo %}
+Bienvenido
+{% endblock titulo %} 
+
+
+{% block contenido %}
+
+
+<section class="features-icons bg-light">
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Nuevo Concierto</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                            {{ form.as_p }}
+    
+                            <input type="submit" value="Enviar">
+    
+                        </form>
+                </div>
+            </div>
+    </div>
+</section>
+{% endblock %}
