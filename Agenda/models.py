@@ -43,3 +43,4 @@ class VidaNocturna(models.Model):
     class Meta:
         verbose_name_plural = 'Vidas Nocturnas'
     
+class Avatar(models.Model):
