@@ -264,7 +264,7 @@ def editar_perfil(request):
     usuario = User.objects.get(username=request.user)
 
     if request.method == 'POST':
-        mi_formulario = UserEditForm(request.POST, instance=request.user)
+        mi_formulario = UserEditForm(request.POST)
 
         if mi_formulario.is_valid():
             informacion = mi_formulario.cleaned_data
@@ -281,9 +281,9 @@ def editar_perfil(request):
     else:
 
         mi_formulario = UserEditForm(initial={'username': usuario.username, 
-                                          'email':usuario.email, 
-                                          'last_name': usuario.last_name, 
-                                          'first_name': usuario.first_name})
+                                            'email':usuario.email, 
+                                            'first_name': usuario.first_name,
+                                            'last_name': usuario.last_name})
 
     return render(request, 'Agenda/editar-perfil.html', {'mi_formulario': mi_formulario, 'usuario': usuario})
 

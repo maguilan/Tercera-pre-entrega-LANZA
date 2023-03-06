@@ -15,13 +15,13 @@ Editar Perfil
                     <h1>Formulario - Editar Perfil</h1>
                     <h3>Usuario> {{ usuario }}</h3>
 
-                    <fomr action="" method="POST">
+                    <form action="" method="POST">
                         {% csrf_token %} 
                         <table>
                             {{ mi_formulario.as_table}}
                         </table>
                         <input type="submit" value="Editar">
-                    </fomr>
+                    </form>
 
                 </div>
             </div>

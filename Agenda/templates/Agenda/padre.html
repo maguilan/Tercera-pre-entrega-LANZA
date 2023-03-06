@@ -26,7 +26,12 @@
                 <a href="{% url 'inicio' %}">Artistas</a>
                 <a href="{% url 'inicio' %}">Noche</a>
                 {% if user.is_authenticated %}
-                <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                <p class="navbar-brand" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    Hola {{ user.first_name }}
+                    <a href="{% url 'logout' %}">Salir</a>
+                </p>
+                {% else %} 
+                <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
                 {% endif %}
             </div>
         </nav>
