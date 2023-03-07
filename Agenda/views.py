@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import ArtistaFormulario, ConciertoFormulario, MuseoFormulario, VidaNocturnaForm, MyUserCreationForm, UserEditForm
-from .models import Artista, Concierto, Museo, VidaNocturna
+from .forms import ArtistaFormulario, ConciertoFormulario, MuseoFormulario, VidaNocturnaForm, MyUserCreationForm, UserEditForm, AvatarFormulario
+from .models import Artista, Concierto, Museo, VidaNocturna, Avatar
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -287,5 +287,18 @@ def editar_perfil(request):
 
     return render(request, 'Agenda/editar-perfil.html', {'mi_formulario': mi_formulario, 'usuario': usuario})
 
+@login_required
+def agregar_avatar(request):
+    avatar = request.user.avatar
+    mi_formulario = AvatarFormulario(instance=avatar)
+
+    if request.method == 'POST':
+        mi_formulario = AvatarFormulario(request.POST, request.FILES, instance=avatar)
+        if mi_formulario.is_valid():
+            mi_formulario.save()
+            return redirect('/')
+        
+    else:
+        return render(request, "Agenda/agregar-avatar.html", {'mi_formulario': mi_formulario})
 
 

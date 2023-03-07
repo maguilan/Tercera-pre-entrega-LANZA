@@ -28,6 +28,7 @@
                 {% if user.is_authenticated %}
                 <p class="navbar-brand" style="margin-top: 1rem; margin-bottom: 1rem;">
                     Hola {{ user.first_name }}
+                    <img src="{{ user.avatar.imagen.url }}" class="rounded-circle" height="40px"alt="{{ user.username }}" style="margin-right:1rem;">
                     <a href="{% url 'logout' %}">Salir</a>
                 </p>
                 {% else %} 

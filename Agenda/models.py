@@ -29,6 +29,8 @@ class Artista(models.Model):
     apellido = models.CharField(max_length=30)
     email = models.EmailField()
     profesion = models.CharField(max_length=30)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
 
     def __str__(self):
         return self.nombre + ' ' + str(self.apellido) 
@@ -45,5 +47,11 @@ class VidaNocturna(models.Model):
     
 class Avatar(models.Model):
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='avatares', null=True, blank=True, default=)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = 'Avatares'
